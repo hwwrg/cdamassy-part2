@@ -1,0 +1,11 @@
+@startuml
+participant Navigateur 
+participant Vue  
+Navigateur -> Controleur : GET /canaux 
+Controleur -> Service : canalService\n.listeAllCanaux()
+Service -> Repository : canalRepository\n.findAll()
+Repository -> Service : Iterable<Canal>
+Service -> Controleur : List<Canal>
+Controleur -> Vue: canaux.jsp 
+Vue -> Navigateur: tableau des canaux
+@enduml
